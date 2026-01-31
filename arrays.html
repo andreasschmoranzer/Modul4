@@ -30,6 +30,70 @@
 
       liste.splice(1, 0, 8);
       console.log(liste);
+
+      // 7: ForEach
+      /* function ausgabe(element) {
+        console.log(element);
+      } */
+
+      liste.forEach((element) => {
+        console.log(element);
+      });
+
+      for (let i = 0; i <= liste.length - 1; i++) {
+        console.log(liste[i]);
+      }
+
+      for (let element of liste) {
+        console.log(element);
+      }
+
+      // 8: Filter
+      const filteredListe = liste.filter((element) => {
+        return false;
+      });
+
+      console.log(filteredListe);
+
+      // 9: Map
+      console.log(liste);
+      const mappedListe = liste.map((element) => {
+        return element - 5;
+      });
+      console.log(mappedListe);
+
+      // 10: Reduce
+      const reducedValue = liste.reduce((previousValue, currentValue) => {
+        console.log(previousValue, currentValue);
+        return previousValue + currentValue;
+      });
+      console.log(reducedValue);
+
+      // Array Beispiel
+
+      const array = ["Hallo", "Griasdi", "Servus"];
+      console.log(array);
+
+      array.push("Sers");
+      console.log(array);
+      const lastElement = array.pop();
+      console.log(lastElement);
+      console.log(array);
+
+      array.splice(0, 0, "Pfiadi");
+      console.log(array);
+
+      const mappedArray = array.map((element) => {
+        return element + "Vällkommen";
+      });
+      console.log(mappedArray);
+
+      const reduceArray = array.reduce((previousValue, currentValue) => {
+        console.log(previousValue, currentValue);
+        return previousValue + currentValue;
+      });
+
+      console.log(reduceArray);
     </script>
   </head>
   <body></body>
