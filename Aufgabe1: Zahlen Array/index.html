@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zahlen Array</title>
+
+    <script>
+      const liste = [5, 6];
+
+      function showArray(text) {
+        console.log(text);
+        text.forEach((element) => {
+          console.log(element);
+        });
+      }
+
+      function multiplyArray() {
+        const mappedListe = liste.map((element) => {
+          return element * 2;
+        });
+        showArray(mappedListe);
+      }
+
+      function calculateArray() {
+        const mappedListe = liste.map((element) => {
+          return element * 2;
+        });
+        const reducedValue = mappedListe.reduce(
+          (previousValue, currentValue) => {
+            return previousValue + currentValue;
+          },
+        );
+        console.log(reducedValue);
+      }
+
+      function contributeElement() {
+        let x = Number(document.getElementById("newElement").value);
+        console.log(typeof x);
+        console.log(x);
+        liste.splice(2, 0, x);
+        console.log(liste);
+      }
+    </script>
+  </head>
+  <body>
+    <span>Inhalt einfügen:</span><span>&nbsp;</span
+    ><input id="newElement" type="number" /><span>&nbsp;</span
+    ><button onclick="contributeElement()">Einfügen</button><br />
+    <span>ID Löschen:</span><input type="number" /><span>&nbsp;</span
+    ><button>Löschen</button><br />
+    <span>Content Löschen: </span><input type="number" /><span>&nbsp;</span
+    ><button>Löschen</button><br />
+    <button onclick="showArray(liste)">Anzeigen</button><br /><button
+      onclick="multiplyArray()"
+    >
+      Multiplizieren</button
+    ><br /><button onclick="calculateArray()">Summe</button>
+  </body>
+</html>

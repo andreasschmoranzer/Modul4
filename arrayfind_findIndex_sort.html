@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      const liste = [5, 9, 3, 4];
+      console.log(liste);
+
+      // 1: Find
+
+      const neun = liste.find((zahl) => {
+        return zahl === 9;
+      });
+
+      console.log(neun);
+
+      // 2. FindIndex
+
+      const neunIndex = liste.findIndex((zahl) => {
+        return zahl === 9;
+      });
+
+      console.log(neunIndex);
+
+      // 3. Sort
+
+      const sortedArray = liste.sort();
+      console.log(sortedArray);
+
+      const sortedArray2 = liste.sort((a, b) => {
+        if (a < b) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+
+      // ternary operator
+      // ternäre operator ? :
+      // condition ? true : false
+      // if Condition ? then : else
+
+      const x = 6;
+
+      if (x < 10) {
+        console.log("x ist kleiner 10");
+      } else {
+        console.log("x ist größer oder gleich 10");
+      }
+
+      x < 10
+        ? console.log("X ist kleiner 10")
+        : console.log("X ist größer oder gleich 10");
+
+      console.log(`X ist ${x < 10 ? "kleiner" : "größer oder gleich"} als 10`);
+    </script>
+  </head>
+  <body></body>
+</html>
