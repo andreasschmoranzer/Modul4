@@ -7,6 +7,7 @@
 
     <script>
       const liste = [5, 6];
+      let mappedListe = 0;
 
       function showArray(text) {
         console.log(text);
@@ -16,10 +17,11 @@
       }
 
       function multiplyArray() {
-        const mappedListe = liste.map((element) => {
+        mappedListe = liste.map((element) => {
           return element * 2;
         });
         showArray(mappedListe);
+        console.log(mappedListe);
       }
 
       function calculateArray() {
@@ -35,11 +37,50 @@
       }
 
       function contributeElement() {
-        let x = Number(document.getElementById("newElement").value);
-        console.log(typeof x);
-        console.log(x);
-        liste.splice(2, 0, x);
-        console.log(liste);
+        const addElement = Number(document.getElementById("newElement").value);
+        console.log(addElement);
+        if (mappedListe !== 0) {
+          mappedListe.splice(2, 0, addElement);
+          console.log(mappedListe);
+        } else {
+          liste.splice(2, 0, addElement);
+          console.log(liste);
+        }
+      }
+
+      function deleteID() {
+        let elementIndex = Number(
+          document.getElementById("delete-element").value,
+        );
+        console.log(elementIndex, mappedListe);
+        if (mappedListe !== 0) {
+          mappedListe.splice(elementIndex, 1);
+          console.log(mappedListe);
+        } else {
+          liste.splice(elementIndex, 1);
+          console.log(liste);
+        }
+      }
+
+      function deleteContent() {
+        const contentNumber = Number(
+          document.getElementById("content-number").value,
+        );
+        if (mappedListe !== 0) {
+          const numberIndex = mappedListe.findIndex((zahl) => {
+            return zahl === contentNumber;
+          });
+          console.log(numberIndex);
+          mappedListe.splice(numberIndex, 1);
+          console.log(mappedListe);
+        } else {
+          const numberIndex = liste.findIndex((zahl) => {
+            return zahl === contentNumber;
+          });
+          console.log(numberIndex);
+          liste.splice(numberIndex, 1);
+          console.log(liste);
+        }
       }
     </script>
   </head>
@@ -47,10 +88,12 @@
     <span>Inhalt einfügen:</span><span>&nbsp;</span
     ><input id="newElement" type="number" /><span>&nbsp;</span
     ><button onclick="contributeElement()">Einfügen</button><br />
-    <span>ID Löschen:</span><input type="number" /><span>&nbsp;</span
-    ><button>Löschen</button><br />
-    <span>Content Löschen: </span><input type="number" /><span>&nbsp;</span
-    ><button>Löschen</button><br />
+    <span>ID Löschen:</span><input id="delete-element" type="number" /><span
+      >&nbsp;</span
+    ><button onclick="deleteID()">Löschen</button><br />
+    <span>Content Löschen: </span
+    ><input id="content-number" type="number" /><span>&nbsp;</span
+    ><button onclick="deleteContent()">Löschen</button><br />
     <button onclick="showArray(liste)">Anzeigen</button><br /><button
       onclick="multiplyArray()"
     >
