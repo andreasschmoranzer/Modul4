@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      let liste = [5, 9, 8, 3];
+
+      function add() {
+        const value = Number(document.getElementById("content").value);
+        liste.push(value);
+      }
+
+      function deleteByPosition() {
+        const position = Number(
+          document.getElementById("deletePosition").value,
+        );
+        if (position < liste.length) {
+          liste.splice(position, 1);
+        } else {
+          console.log(
+            "Die Position muss kleiner als " + liste.length + " sein",
+          );
+        }
+      }
+
+      function deleteByContent() {
+        const content = Number(document.getElementById("deleteContent").value);
+        const newListe = liste.filter((element) => {
+          return element !== content;
+        });
+        liste = newListe;
+        console.log(liste);
+      }
+
+      function printAll() {
+        console.log(liste);
+        liste.forEach((element) => {
+          console.log(element);
+        });
+      }
+    </script>
+  </head>
+  <body>
+    Element einfügen: <input type="number" id="content" /><button
+      onclick="add()"
+    >
+      Einfügen
+    </button>
+
+    Position löschen: <input type="number" id="deletePosition" /><button
+      onclick="deleteByPosition()"
+    >
+      Löschen
+    </button>
+
+    Inhalt löschen: <input type="number" id="deleteContent" /><button
+      onclick="deleteByContent()"
+    >
+      Löschen
+    </button>
+
+    <button onclick="printAll()">Anzeigen</button>
+  </body>
+</html>
