@@ -7,11 +7,10 @@
 
     <script>
       let list = [5, 6];
-      let mappedList = 0;
 
-      function showArray(text) {
-        console.log(text);
-        text.forEach((element) => {
+      function showArray() {
+        console.log(list);
+        list.forEach((element) => {
           console.log(element);
         });
       }
@@ -20,52 +19,31 @@
         mappedList = list.map((element) => {
           return element * 2;
         });
-        showArray(mappedList);
-        console.log(mappedList);
+        list = mappedList;
+        showArray();
       }
 
       function calculateArray() {
-        if (mappedList !== 0) {
-          const reducedValue = mappedList.reduce(
-            (previousValue, currentValue) => {
-              return previousValue + currentValue;
-            },
-          );
-          console.log(reducedValue);
-        } else {
-          const reducedValue = list.reduce((previousValue, currentValue) => {
-            return previousValue + currentValue;
-          });
-          console.log(reducedValue);
-        }
+        const reducedValue = list.reduce((previousValue, currentValue) => {
+          return previousValue + currentValue;
+        });
+        console.log(reducedValue);
       }
 
       function addElement() {
         const addElement = Number(document.getElementById("new-element").value);
         console.log(addElement);
-        if (mappedList !== 0) {
-          mappedList.push(addElement);
-          console.log(mappedList);
-        } else {
-          list.push(addElement);
-          console.log(list);
-        }
+        list.push(addElement);
+        console.log(list);
       }
 
       function deleteByIndex() {
         const elementIndex = Number(
           document.getElementById("delete-index").value,
         );
-        if (mappedList !== 0 && elementIndex < mappedList.length) {
-          mappedList.splice(elementIndex, 1);
-          console.log(mappedList);
-        } else if (elementIndex < list.length) {
+        if (elementIndex < list.length) {
           list.splice(elementIndex, 1);
           console.log(list);
-        } else if (mappedList !== 0) {
-          console.log(
-            "Die Position muss kleiner als " + mappedList.length + " sein",
-          );
         } else {
           console.log("Die Position muss kleiner als " + list.length + " sein");
         }
@@ -75,19 +53,11 @@
         const contentNumber = Number(
           document.getElementById("delete-element").value,
         );
-        if (mappedList !== 0) {
-          const newMappedList = mappedList.filter((element) => {
-            return element !== contentNumber;
-          });
-          mappedList = newMappedList;
-          console.log(mappedList);
-        } else {
-          const newList = list.filter((element) => {
-            return element !== contentNumber;
-          });
-          list = newList;
-          console.log(list);
-        }
+        const newList = list.filter((element) => {
+          return element !== contentNumber;
+        });
+        list = newList;
+        console.log(list);
       }
     </script>
   </head>
