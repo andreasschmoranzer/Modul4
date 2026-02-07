@@ -16,8 +16,8 @@
       }
 
       function multiplyArray() {
-        mappedList = list.map((element) => {
-          return element * 2;
+        const mappedList = list.map((element) => {
+          return element + "Hallo";
         });
         list = mappedList;
         showArray();
@@ -25,16 +25,15 @@
 
       function calculateArray() {
         const reducedValue = list.reduce((previousValue, currentValue) => {
-          return previousValue + currentValue;
+          return previousValue + " " + currentValue;
         });
         console.log(reducedValue);
       }
 
       function addElement() {
-        const addElement = Number(document.getElementById("new-element").value);
-        console.log(addElement);
+        const addElement = document.getElementById("new-element").value;
         list.push(addElement);
-        console.log(list);
+        showArray();
       }
 
       function deleteByIndex() {
@@ -43,33 +42,31 @@
         );
         if (elementIndex < list.length) {
           list.splice(elementIndex, 1);
-          console.log(list);
+          showArray();
         } else {
           console.log("Die Position muss kleiner als " + list.length + " sein");
         }
       }
 
       function deleteElement() {
-        const contentNumber = Number(
-          document.getElementById("delete-element").value,
-        );
+        const contentNumber = document.getElementById("delete-element").value;
         const newList = list.filter((element) => {
           return element !== contentNumber;
         });
         list = newList;
-        console.log(list);
+        showArray();
       }
     </script>
   </head>
   <body>
     <span>Inhalt einfügen:</span><span>&nbsp;</span
-    ><input id="new-element" type="number" /><span>&nbsp;</span
+    ><input id="new-element" type="text" /><span>&nbsp;</span
     ><button onclick="addElement()">Einfügen</button><br />
     <span>ID Löschen:</span><input id="delete-index" type="number" /><span
       >&nbsp;</span
     ><button onclick="deleteByIndex()">Löschen</button><br />
-    <span>Content Löschen: </span
-    ><input id="delete-element" type="number" /><span>&nbsp;</span
+    <span>Content Löschen: </span><input id="delete-element" type="text" /><span
+      >&nbsp;</span
     ><button onclick="deleteElement()">Löschen</button><br />
     <button onclick="showArray(list)">Anzeigen</button><br /><button
       onclick="multiplyArray()"

@@ -6,11 +6,12 @@
     <title>Document</title>
 
     <script>
-      let liste = [5, 9, 8, 3];
+      let liste = ["Hallo", "Hi", "Test"];
 
       function add() {
-        const value = Number(document.getElementById("content").value);
+        const value = document.getElementById("content").value;
         liste.push(value);
+        printAll();
       }
 
       function deleteByPosition() {
@@ -19,6 +20,7 @@
         );
         if (position < liste.length) {
           liste.splice(position, 1);
+          printAll();
         } else {
           console.log(
             "Die Position muss kleiner als " + liste.length + " sein",
@@ -27,12 +29,12 @@
       }
 
       function deleteByContent() {
-        const content = Number(document.getElementById("deleteContent").value);
+        const content = document.getElementById("deleteContent").value;
         const newListe = liste.filter((element) => {
           return element !== content;
         });
         liste = newListe;
-        console.log(liste);
+        printAll();
       }
 
       function printAll() {
@@ -41,14 +43,27 @@
           console.log(element);
         });
       }
+
+      function multiply() {
+        const newListe = liste.map((element) => {
+          return element + "Hallo";
+        });
+        liste = newListe;
+        printAll();
+      }
+
+      function sum() {
+        const sum = liste.reduce((previousValue, currentValue) => {
+          return previousValue + " " + currentValue;
+        });
+        console.log(sum);
+      }
     </script>
   </head>
   <body>
-    Element einfügen: <input type="number" id="content" /><button
-      onclick="add()"
-    >
-      Einfügen
-    </button>
+    Element einfügen: <input type="text" id="content" /><button onclick="add()">
+      Einfügen</button
+    ><br />
 
     Position löschen: <input type="number" id="deletePosition" /><button
       onclick="deleteByPosition()"
@@ -56,12 +71,14 @@
       Löschen
     </button>
 
-    Inhalt löschen: <input type="number" id="deleteContent" /><button
+    Inhalt löschen: <input type="text" id="deleteContent" /><button
       onclick="deleteByContent()"
     >
       Löschen
     </button>
 
     <button onclick="printAll()">Anzeigen</button>
+    <button onclick="multiply()">Multiplizieren</button>
+    <button onclick="sum()">Summe</button>
   </body>
 </html>
