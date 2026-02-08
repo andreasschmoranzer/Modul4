@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // 1: Objekt erzeugen
+
+      const person = {
+        hairColor: "brown",
+        eyeColor: "brown",
+        height: 178,
+        age: 30,
+        name: "Alex",
+      };
+
+      const car = {
+        ps: 100,
+        color: "blue",
+        company: "VW",
+        model: "Golf",
+        productionYear: 2008,
+        kilometer: 80000,
+        owner: [person],
+      };
+
+      // 2: Objekt auf der Konsole ausgeben lassen
+
+      console.log(car);
+
+      // 3: Attribute auf Konsole ausgeben
+
+      console.log(car.color);
+      console.log(car.ps);
+      console.log(car.owner[0]);
+      console.log(person);
+      car.ps = 120;
+      console.log(car);
+
+      // 4: Neue Attribute einfügen
+
+      car.seats = 5;
+      console.log(car);
+    </script>
+  </head>
+  <body></body>
+</html>
