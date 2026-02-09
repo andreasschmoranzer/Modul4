@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      // 1: Ein leeres Array anlegen.
+
+      const studentList = [];
+
+      // 2: Funktion für den Button Erstellen anlegen.
+      function createStudent() {
+        // Löschungsvorschlag Methode mit Konstanten:
+        const firstName = document.getElementById("first-name").value;
+        const surname = document.getElementById("surname").value;
+        const age = document.getElementById("age").value;
+        const schoolClass = document.getElementById("school-class").value;
+        const englisch = document.getElementById("english").value;
+        const german = document.getElementById("german").value;
+        const math = document.getElementById("math").value;
+
+        const pupil = {
+          firstName: firstName,
+          surname: surname,
+          age: age,
+          schoolClass: schoolClass,
+          score: {
+            englisch: englisch,
+            german: german,
+            math: math,
+          },
+        };
+
+        // 3: Objekt mit Attributen und Werten definieren. Eigene Lösung.
+        /* const pupil = {
+          firstName: document.getElementById("first-name").value,
+          surname: document.getElementById("surname").value,
+          age: document.getElementById("age").value,
+          schoolClass: document.getElementById("school-class").value,
+          score: {
+            englisch: document.getElementById("english").value,
+            german: document.getElementById("german").value,
+            math: document.getElementById("math").value,
+          },
+        }; */
+
+        // 5: Objekt zum Array hinzufügen.
+        studentList.push(pupil);
+        printAll();
+      }
+
+      // 6: Array auf der Konsole ausgeben lassen.
+      function printAll() {
+        console.log(studentList);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Schüler eintragen</h1>
+    <span>Vorname: </span><input id="first-name" type="text" /><br />
+    <span>Nachname: </span><input id="surname" type="text" /><br />
+    <span>Alter: </span><input id="age" type="number" /><br />
+    <span>Klasse: </span
+    ><select name="class" id="school-class">
+      <option value="1">1.</option>
+      <option value="2">2.</option>
+      <option value="3">3.</option>
+      <option value="4">4.</option></select
+    ><br />
+    <span>Englisch: </span><input id="english" type="number" /><br />
+    <span>Deutsch: </span><input id="german" type="number" /><br />
+    <span>Mathe: </span><input id="math" type="number" /><br />
+    <button onclick="createStudent()">Erstellen</button><br />
+    <button onclick="printAll()">Anzeigen</button>
+  </body>
+</html>

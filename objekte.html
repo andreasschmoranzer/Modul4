@@ -15,9 +15,15 @@
         name: "Alex",
       };
 
+      const colorCombinations = {
+        firstColor: "blue",
+        secondColor: "red",
+        decal: "yellow",
+      };
+
       const car = {
         ps: 100,
-        color: "blue",
+        color: [colorCombinations],
         company: "VW",
         model: "Golf",
         productionYear: 2008,
@@ -42,6 +48,12 @@
 
       car.seats = 5;
       console.log(car);
+
+      // 5: Objekt per For auslesen
+
+      for (let key in car) {
+        console.log(key, car[key]);
+      }
     </script>
   </head>
   <body></body>
