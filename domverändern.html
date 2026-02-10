@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .card-box {
+        box-shadow: rgba(124, 124, 124, 0.2) 0px 0px 24px;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        width: fit-content;
+      }
+
+      .card-header,
+      .card-img,
+      .card-box {
+        margin: 0 0 0.5rem 0;
+      }
+
+      .card-img {
+        width: 15rem;
+      }
+    </style>
+
+    <script>
+      const randomImages = [
+        "https://cdn.pixabay.com/photo/2016/10/18/21/22/beach-1751455_1280.jpg",
+        "https://cdn.pixabay.com/photo/2024/01/29/14/39/meadow-8540028_1280.jpg",
+        "https://cdn.pixabay.com/photo/2025/08/01/13/35/winter-9748652_1280.jpg",
+        "https://cdn.pixabay.com/photo/2022/11/19/18/45/gray-geese-7602847_1280.jpg",
+      ];
+
+      function like(url) {
+        alert("You like " + url);
+      }
+
+      function dislike(url) {
+        alert("You dislike " + url);
+      }
+
+      function addNewByString() {
+        // 1: Random Image
+        // 0 <= x < 1
+        console.log(Math.random() * randomImages.length);
+        const randomImage =
+          randomImages[Math.floor(Math.random() * randomImages.length)];
+        console.log(randomImage);
+        // 2: String setzen (mit ${}-Notation)
+        const htmlString = `
+        <div class="card-box">
+            <h1 class="card-header">Title of a card</h1>
+            <div class="card-body">
+                <img
+                    class="card-img"
+                    src="${randomImage}"
+                    alt="yellow box gloves"
+                />
+            </div>
+            <div class="card-footer">
+                <button onclick="like('${randomImage}')" class="like">Like</button>
+                <button onclick="dislike('${randomImage}')" class="dislike">Dislike</button>
+            </div>
+        </div>`;
+        console.log(htmlString);
+        document.getElementById("wrapper").innerHTML = htmlString;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="card-box">
+      <h1 class="card-header">Title of a card</h1>
+      <div class="card-body">
+        <img
+          class="card-img"
+          src="https://cdn.pixabay.com/photo/2016/04/15/17/26/box-1331470_960_720.jpg"
+          alt="yellow box gloves"
+        />
+      </div>
+      <div class="card-footer">
+        <button
+          onclick="
+            like(
+              'https://cdn.pixabay.com/photo/2016/04/15/17/26/box-1331470_960_720.jpg',
+            )
+          "
+        >
+          Like
+        </button>
+        <button
+          onclick="
+            dislike(
+              'https://cdn.pixabay.com/photo/2016/04/15/17/26/box-1331470_960_720.jpg',
+            )
+          "
+          class="dislike"
+        >
+          Dislike
+        </button>
+      </div>
+    </div>
+    <button onclick="addNewByString()" class="btn">Add By String</button>
+    <button class="btn">Add New</button>
+    <div id="wrapper"></div>
+  </body>
+</html>
