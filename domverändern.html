@@ -40,6 +40,58 @@
         alert("You dislike " + url);
       }
 
+      function addNew() {
+        // 1: Elemente erstellen (Card, Header, Body, Footer, Like, Dislike)
+        // 2: Klassen setzen
+
+        const randomImage =
+          randomImages[Math.floor(Math.random() * randomImages.length)];
+
+        const card = document.createElement("div");
+        card.classList.add("card-box");
+
+        const header = document.createElement("h1");
+        const title = document.createTextNode("Title of Card");
+        header.appendChild(title);
+        header.classList.add("card-header");
+
+        const body = document.createElement("div");
+        body.classList.add("card-body");
+
+        const footer = document.createElement("div");
+        footer.classList.add("card-footer");
+
+        const likeButton = document.createElement("button");
+        likeButton.setAttribute("onclick", `like('${randomImage}')`);
+        const likeText = document.createTextNode("Like");
+        likeButton.appendChild(likeText);
+
+        const dislikeButton = document.createElement("button");
+        dislikeButton.setAttribute("onclick", `dislike('${randomImage}')`);
+        const dislikeText = document.createTextNode("Dislike");
+        dislikeButton.appendChild(dislikeText);
+
+        const image = document.createElement("img");
+        image.classList.add("card-img");
+
+        // 3: Image setzen
+
+        const img = document.createElement("img");
+        img.src = randomImage;
+        img.classList.add("card-img");
+
+        footer.appendChild(likeButton);
+        footer.appendChild(dislikeButton);
+
+        body.appendChild(img);
+
+        card.appendChild(header);
+        card.appendChild(body);
+        card.appendChild(footer);
+
+        document.getElementById("wrapper").prepend(card);
+      }
+
       function addNewByString() {
         // 1: Random Image
         // 0 <= x < 1
@@ -101,7 +153,7 @@
       </div>
     </div>
     <button onclick="addNewByString()" class="btn">Add By String</button>
-    <button class="btn">Add New</button>
+    <button onclick="addNew()" class="btn">Add New</button>
     <div id="wrapper"></div>
   </body>
 </html>

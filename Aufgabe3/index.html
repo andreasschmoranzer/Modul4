@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .card {
+        background-color: rgb(218, 218, 218);
+        padding-left: 0.8rem;
+        border: 1px solid black;
+      }
+    </style>
+
+    <script>
+      // 1: Objekte mit Attributen und Werten anlegen i.d.F. die Schülerinnen und Schüler anlegen.
+      const mariaReiter = {
+        Vorname: "Maria",
+        Nachname: "Reiter",
+        Alter: 9,
+      };
+
+      const manuelaSatt = {
+        Vorname: "Manuela",
+        Nachname: "Satt",
+        Alter: 10,
+      };
+
+      const maxMuster = {
+        Vorname: "Max",
+        Nachname: "Muster",
+        Alter: 6,
+      };
+
+      const moritzMueller = {
+        Vorname: "Moritz",
+        Nachname: "Müller",
+        Alter: 11,
+      };
+
+      // 2: Das Array anlegen & auf der Konsole ausgeben lassen.
+      const studentList = [mariaReiter, manuelaSatt, maxMuster, moritzMueller];
+
+      console.log(studentList);
+
+      // 3: Elemente erstellen
+
+      function add() {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        console.log(card);
+
+        const firstName = document.createElement("p");
+        const textFirstName = document.createTextNode("Vorname:");
+        firstName.appendChild(textFirstName);
+        console.log(firstName);
+
+        const surname = document.createElement("p");
+        const textSurname = document.createTextNode("Nachname:");
+        surname.appendChild(textSurname);
+        console.log(surname);
+
+        const age = document.createElement("p");
+        const textAge = document.createTextNode("Alter:");
+        age.appendChild(textAge);
+        console.log(age);
+
+        // 4: Vorname, Nachname und Alter setzen
+
+        const foreName = document.createElement("p");
+        foreName.src = card.appendChild(firstName);
+        card.appendChild(surname);
+        card.appendChild(age);
+
+        document.getElementById("wrapper").appendChild(card);
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="add()">ADD</button>
+    <div id="wrapper"></div>
+    <!-- <div class="card">
+      <p class="first-name">Vorname: Ulrich</p>
+      <p class="surname">Nachname: Müller</p>
+      <p class="age">Alter: 7</p>
+    </div> -->
+  </body>
+</html>
