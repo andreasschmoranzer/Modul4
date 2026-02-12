@@ -14,64 +14,53 @@
     </style>
 
     <script>
-      // 1: Objekte mit Attributen und Werten anlegen i.d.F. die Schülerinnen und Schüler anlegen.
-      const mariaReiter = {
-        Vorname: "Maria",
-        Nachname: "Reiter",
-        Alter: 9,
-      };
-
-      const manuelaSatt = {
-        Vorname: "Manuela",
-        Nachname: "Satt",
-        Alter: 10,
-      };
-
-      const maxMuster = {
-        Vorname: "Max",
-        Nachname: "Muster",
-        Alter: 6,
-      };
-
-      const moritzMueller = {
-        Vorname: "Moritz",
-        Nachname: "Müller",
-        Alter: 11,
-      };
-
-      // 2: Das Array anlegen & auf der Konsole ausgeben lassen.
-      const studentList = [mariaReiter, manuelaSatt, maxMuster, moritzMueller];
-
-      console.log(studentList);
-
-      // 3: Elemente erstellen
+      const firstName = ["Maria", "Manuela", "Max", "Moritz", "Stephanie"];
+      const surname = ["Berger", "Stuffer", "Muster", "Test", "Müller"];
+      const age = [7, 8, 9, 10, 12];
 
       function add() {
+        const randomFirstName =
+          firstName[Math.floor(Math.random() * firstName.length)];
+
+        const randomSurname =
+          surname[Math.floor(Math.random() * surname.length)];
+
+        const randomAge = age[Math.floor(Math.random() * age.length)];
+
+        /* const student = {
+          firstName: randomFirstName,
+          surname: randomSurname,
+          age: randomAge,
+        };
+
+        console.log(student); */
+
         const card = document.createElement("div");
-        card.classList.add("card");
-        console.log(card);
+        // card.classList.add("card");
+        // card.id = Math.random();
+        card.style.backgroundColor = "rgb(218, 218, 218)";
+        card.style.paddingLeft = "0.8rem";
+        card.style.border = "1px solid black";
 
-        const firstName = document.createElement("p");
-        const textFirstName = document.createTextNode("Vorname:");
-        firstName.appendChild(textFirstName);
-        console.log(firstName);
+        const firstNameParagraph = document.createElement("p");
+        const surnameParagraph = document.createElement("p");
+        const ageParagraph = document.createElement("p");
 
-        const surname = document.createElement("p");
-        const textSurname = document.createTextNode("Nachname:");
-        surname.appendChild(textSurname);
-        console.log(surname);
+        const textFirstName = document.createTextNode(
+          "Vorname: " + randomFirstName,
+        );
+        const textSurname = document.createTextNode(
+          "Nachname: " + randomSurname,
+        );
+        const textAge = document.createTextNode("Alter: " + randomAge);
 
-        const age = document.createElement("p");
-        const textAge = document.createTextNode("Alter:");
-        age.appendChild(textAge);
-        console.log(age);
+        firstNameParagraph.appendChild(textFirstName);
+        surnameParagraph.appendChild(textSurname);
+        ageParagraph.appendChild(textAge);
 
-        // 4: Vorname, Nachname und Alter setzen
-
-        const foreName = document.createElement("p");
-        foreName.src = card.appendChild(firstName);
-        card.appendChild(surname);
-        card.appendChild(age);
+        card.appendChild(firstNameParagraph);
+        card.appendChild(surnameParagraph);
+        card.appendChild(ageParagraph);
 
         document.getElementById("wrapper").appendChild(card);
       }
@@ -80,10 +69,5 @@
   <body>
     <button onclick="add()">ADD</button>
     <div id="wrapper"></div>
-    <!-- <div class="card">
-      <p class="first-name">Vorname: Ulrich</p>
-      <p class="surname">Nachname: Müller</p>
-      <p class="age">Alter: 7</p>
-    </div> -->
   </body>
 </html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      // 1: Array erzeugen
+      let names = [];
+
+      // 4: Localstorage Items setzen
+      function saveNamesToLocalstorage() {
+        console.log(JSON.stringify(names));
+        localStorage.setItem("names", JSON.stringify(names));
+      }
+
+      // 2: Namen hinzufügen zu Array
+      function addName() {
+        names.push(document.getElementById("addName").value);
+        console.log(names);
+      }
+
+      // 3: namen aus Array löschen
+      function deleteName() {
+        console.log(names);
+        const nameInput = document.getElementById("deleteName").value;
+        names = names.filter((name) => {
+          return name !== nameInput;
+        });
+        console.log(names);
+      }
+    </script>
+  </head>
+  <body>
+    <input type="text" id="addName" /><button onclick="addName()">Add</button
+    ><br />
+    <input type="text" id="deleteName" /><button onclick="deleteName()">
+      Delete</button
+    ><br />
+    <button>Load</button
+    ><button onclick="saveNamesToLocalstorage()">Save</button
+    ><button>Delete</button>
+  </body>
+</html>
