@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      function add() {
+        /* const obj = {
+          car: "BMW",
+          model: "x3",
+          ps: 120,
+          color: "black",
+        }; */
+
+        const numb = 12345;
+        document.getElementById("demo").innerHTML = numb;
+
+        /* const myJSON = JSON.stringify(numb);
+        console.log(myJSON);
+        document.getElementById("demo").innerHTML = myJSON; */
+      }
+    </script>
+  </head>
+  <body>
+    <p id="demo"></p>
+    <button onclick="add()">add</button>
+  </body>
+</html>

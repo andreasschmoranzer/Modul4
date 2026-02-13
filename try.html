@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      const obj = {
+        firstName: "Joe",
+        lastName: "Muster",
+        age: 50,
+      };
+
+      const lsd = {
+        firstName: "Maria",
+        lastName: "Berger",
+        age: 39,
+      };
+
+      const array = [obj, lsd];
+
+      function add() {
+        for (let i = 0; i < array.length; i++) {
+          console.log(array[i]);
+          console.log(array[i].firstName);
+          document.getElementById("demo").innerHTML = array[i].firstName;
+        }
+      }
+
+      /* function add() {
+        console.log(array);
+        let text = "<p>";
+        for (let i = 0; i < array.length; i++) {
+          text += "<li>" + array[i] + "<li>";
+          console.log(array[i]);
+        }
+        document.getElementById("demo").innerHTML = text;
+      } */
+    </script>
+  </head>
+  <body>
+    <p id="demo"></p>
+    <button onclick="add()">add</button>
+  </body>
+</html>

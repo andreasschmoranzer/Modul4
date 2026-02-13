@@ -6,14 +6,34 @@
     <title>Document</title>
 
     <script>
+      // 7: Event Listener
+      document.addEventListener("DOMContentLoaded", loadNamesFromLocalstorage);
+
       // 1: Array erzeugen
       let names = [];
+
+      // 6: Localstorage Item holen und in Array hinzufügen
+      function loadNamesFromLocalstorage() {
+        console.log(names);
+        names = JSON.parse(localStorage.getItem("names"));
+        console.log(names);
+      }
 
       // 4: Localstorage Items setzen
       function saveNamesToLocalstorage() {
         console.log(JSON.stringify(names));
         localStorage.setItem("names", JSON.stringify(names));
       }
+
+      // 5: Array und Localstorage zurücksetzen
+      function deleteNames() {
+        names = [];
+        localStorage.removeItem("names");
+      }
+
+      /* let text = localStorage.getItem("testJSON");
+      let obj = JSON.parse(text);
+      document.getElementByID("demo").innerHTML = obj.name; */
 
       // 2: Namen hinzufügen zu Array
       function addName() {
@@ -40,6 +60,6 @@
     ><br />
     <button>Load</button
     ><button onclick="saveNamesToLocalstorage()">Save</button
-    ><button>Delete</button>
+    ><button onclick="deleteNames()">Delete All</button>
   </body>
 </html>
