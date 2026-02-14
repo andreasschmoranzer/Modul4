@@ -21,11 +21,16 @@
       const array = [obj, lsd];
 
       function add() {
-        for (let i = 0; i < array.length; i++) {
-          console.log(array[i]);
+        let len = array.length;
+        let text = "";
+
+        for (let i = 0; i < len; i++) {
+          text += array[i].age + "<br>";
+          /* console.log(array[i]);
           console.log(array[i].firstName);
-          document.getElementById("demo").innerHTML = array[i].firstName;
+          document.getElementById("demo").innerHTML = array[i].firstName; */
         }
+        document.getElementById("demo").innerHTML = text;
       }
 
       /* function add() {

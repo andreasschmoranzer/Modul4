@@ -18,8 +18,16 @@
       const alter = [7, 8, 9];
 
       // TODO 1: Student Array speichern
-      let student = [];
-      console.log(student);
+
+      let vornamenLocalstorage = [];
+      let nachnamenLocalstorage = [];
+      let alterLocalstorage = [];
+
+      let student = [
+        vornamenLocalstorage,
+        nachnamenLocalstorage,
+        alterLocalstorage,
+      ];
 
       //TODO 10: Init Methode zum Laden und anzeigen
 
@@ -30,7 +38,6 @@
       //TODO 3: Students in localstorage speichern
 
       //TODO 7: Students löschen function und in Localstorage speichern
-
       function deleteStudent(id) {
         document.getElementById(id).remove();
       }
@@ -54,6 +61,7 @@
         const vornameParagraph = document.createElement("p");
         const nachnameParagraph = document.createElement("p");
         const alterParagraph = document.createElement("p");
+        const deleteButton = document.createElement("button");
 
         const vornamenText = document.createTextNode(
           "Vorname: " + randomVorname,
@@ -62,40 +70,59 @@
           "Nachname: " + randomNachname,
         );
         const agerText = document.createTextNode("Alter: " + randomAlter);
+        const deleteButtonText = document.createTextNode("Löschen");
 
         vornameParagraph.appendChild(vornamenText);
         nachnameParagraph.appendChild(nachnameText);
         alterParagraph.appendChild(agerText);
+        deleteButton.appendChild(deleteButtonText);
 
         studentDiv.appendChild(vornameParagraph);
         studentDiv.appendChild(nachnameParagraph);
         studentDiv.appendChild(alterParagraph);
+        studentDiv.appendChild(deleteButton);
 
         //TODO 7: Löschen Button
-        const deleteButton = document.createElement("button");
+
+        //TODO 6: Id anpassen
         deleteButton.setAttribute("onclick", `deleteStudent('${randomID}')`);
-        const deleteButtonText = document.createTextNode("Löschen");
-        deleteButton.appendChild(deleteButtonText);
-        studentDiv.appendChild(deleteButton);
 
         document.getElementById("wrapper").appendChild(studentDiv);
 
         //TODO 2: In Array und Localstorage speichern
-        vornamen.push(randomVorname);
-        nachnamen.push(randomNachname);
-        alter.push(randomAlter);
 
-        student = [vornamen, nachnamen, alter];
+        vornamenLocalstorage.push(randomVorname);
+        nachnamenLocalstorage.push(randomNachname);
+        alterLocalstorage.push(randomAlter);
+
+        student = [
+          vornamenLocalstorage,
+          nachnamenLocalstorage,
+          alterLocalstorage,
+        ];
         console.log(student);
 
         localStorage.setItem("students", JSON.stringify(student));
         console.log(JSON.stringify(student));
-        //TODO 6: Id anpassen
 
         // TODO 9: Student appenden.
       }
 
       // TODO 8: Funktion zum appenden auslagern.
+      /* function appendElement() {
+        const vornameParagraph = document.createElement("p");
+        const nachnameParagraph = document.createElement("p");
+        const alterParagraph = document.createElement("p");
+        const deleteButton = document.createElement("button");
+      }
+ */
+      /* const vornameTextLocalstorage = document.createTextNode(
+          "Vorname: " + vornamen,
+        );
+        const nachnameTextLocalStorage = document.createTextNode(
+          "Nachname: " + nachnamen,
+        );
+        const agerTextLocalStorage = document.createTextNode("Alter: " + alter); */
     </script>
   </head>
   <body>
