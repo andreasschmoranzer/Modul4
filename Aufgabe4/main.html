@@ -11,7 +11,7 @@
     </style>
     <script>
       // TODO 11: Eventlistener
-      document.addEventListener("DOMContentLoaded", appendElements);
+      document.addEventListener("DOMContentLoaded", initStudents);
 
       const vornamen = ["Jan", "Peter", "Ulrich"];
       const nachnamen = ["Müller", "Meier", "Schuster"];
@@ -21,6 +21,12 @@
       let students = [];
 
       //TODO 10: Init Methode zum Laden und anzeigen
+      function initStudents() {
+        readLocalstorage();
+        students.forEach((student) => {
+          appendStudent(student);
+        });
+      }
 
       //TODO 4: Students aus localstorage lesen
       function readLocalstorage() {
@@ -58,17 +64,6 @@
         //TODO 5: ID generieren
         const randomId = Math.random();
 
-        let randomVornameText = "Vorname: " + randomVorname;
-        let randomNachnameText = "Nachname: " + randomNachname;
-        let randomAlterText = "Alter: " + randomAlter;
-
-        createDiv(
-          randomVornameText,
-          randomNachnameText,
-          randomAlterText,
-          randomId,
-        );
-
         //TODO 2: In Array und Localstorage speichern
         const student = {
           //TODO 6: Id anpassen
@@ -82,38 +77,15 @@
         saveToLocalstorage();
 
         // TODO 9: Student appenden.
-        let findNumber = 0;
-        for (let i = 0; i < students.length; i++) {
-          findNumber = students[i].id;
-        }
-        console.log(findNumber);
+        appendStudent(student);
       }
 
       // TODO 8: Funktion zum appenden auslagern.
 
-      function appendElements() {
-        readLocalstorage();
-        const x = students.length;
-        console.log(x);
-
-        let textFirstName = "";
-        let textSurname = "";
-        let textAge = "";
-        let numberIndex = 0;
-
-        for (let i = 0; i < x; i++) {
-          textFirstName = "Vorname: " + students[i].firstName;
-          textSurname = "Nachname: " + students[i].surname;
-          textAge = "Alter: " + students[i].age;
-          numberIndex = students[i].id;
-          createDiv(textFirstName, textSurname, textAge, numberIndex);
-        }
-      }
-
-      function createDiv(textFirstName, textSurname, textAge, numberIndex) {
+      function appendStudent(student) {
         const studentDiv = document.createElement("div");
         studentDiv.classList.add("student");
-        studentDiv.id = numberIndex;
+        studentDiv.id = student.id;
         studentDiv.style.backgroundColor = "#ddd";
 
         const vornameParagraph = document.createElement("p");
@@ -121,11 +93,15 @@
         const alterParagraph = document.createElement("p");
         const deleteButton = document.createElement("button");
 
-        deleteButton.setAttribute("onclick", `deleteStudent(${numberIndex})`);
+        deleteButton.setAttribute("onclick", `deleteStudent(${student.id})`);
 
-        const vornamenText = document.createTextNode(textFirstName);
-        const nachnameText = document.createTextNode(textSurname);
-        const agerText = document.createTextNode(textAge);
+        const vornamenText = document.createTextNode(
+          "Vorname: " + student.firstName,
+        );
+        const nachnameText = document.createTextNode(
+          "Nachname: " + student.surname,
+        );
+        const agerText = document.createTextNode("Alter: " + student.age);
         const deleteButtonText = document.createTextNode("Löschen");
 
         vornameParagraph.appendChild(vornamenText);
@@ -145,7 +121,6 @@
 
   <body>
     <button onclick="randomStudent()">ADD</button><br />
-    <!-- <button onclick="appendElements()">Hallo</button> -->
     <h1>Students</h1>
     <div id="wrapper"></div>
   </body>
